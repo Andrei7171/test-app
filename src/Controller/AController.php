@@ -15,9 +15,15 @@ class AController extends AbstractController
      */
     public function index(string $name="switch"): Response
     {
+        
+        $resultjk = file_get_contents("https://official-joke-api.appspot.com/random_joke");
+        $datajk = json_decode($resultjk);
+
         return $this->render('a/index.html.twig', [
+            
             'name' => $name,
-            'login'=> true,
+            'login' => true,
+            'jk' => $datajk
         ]);
     }
 
@@ -32,7 +38,11 @@ class AController extends AbstractController
         return $this->render('a/index.html.twig', [
             'name' => $name,
             'routePath' => $routePath,
-            'login'=>false]);
+            'login'=>false,
+        
+
+        ]);
+        
     }
 }
 

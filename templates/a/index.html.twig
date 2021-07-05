@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ name }}!{% endblock %}
+{% block title %}Funny {{ name }}!{% endblock %}
 
 {% block body %}
 <style>
@@ -10,10 +10,16 @@
 
 <div class="example-wrapper">
     <h1>press {{ name }}! ✅</h1>
-
+  {% if jk is defined %}
+      <h1>{{jk.setup}}</h1>
+      {{jk.punchline}}
+      <br />
+    {% endif %}
     {% if login %}
+    press for a new joke
       <a href="{{ path("a2", { name: name }) }}" class="btn btn-lg btn-secondary fw-bold border-white bg-white">off {{name}}</a>
     {% else %}
+    press again
       <a href="{{ routePath }}" class="btn btn-lg btn-warning fw-bold border-white bg-white">on {{name}}</a>
     {% endif %}
 </div>
